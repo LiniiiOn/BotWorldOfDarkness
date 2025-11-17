@@ -1,3 +1,4 @@
+import TelegramBot from 'node-telegram-bot-api';
 const tg = window.Telegram.WebApp;
 
 export function useTelegram() {
