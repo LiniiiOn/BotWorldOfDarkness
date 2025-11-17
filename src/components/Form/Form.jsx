@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Form.css';
 import { useTelegram } from '../../hook/useTelegram';
+import TelegramBot from 'node-telegram-bot-api';
 
 const Form = () => {
 
@@ -9,6 +10,22 @@ const Form = () => {
     const [street, setStreet] = useState('');
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
+
+    const onSendData = useCallback(() => {
+        const data = {
+            country,
+            street,
+            subject
+        }
+        tg.sendData(JSON.stringify(data));
+    }, [])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData);
+        return () => {
+            tg.onEvent('mainButtonClicked', onSendData);
+        }
+    }, [])
 
 
     useEffect(() => {

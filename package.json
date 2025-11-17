@@ -32,5 +32,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "browserify-fs": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "querystring-es3": "^0.2.1"
   }
 }
